@@ -11,6 +11,27 @@ Functions:
 * `hash_sequence`: convert a string into a reduced hash
 * `reduceMd5`: transform an md5sum into a reduced hash
 
+## Usage
+
+Python
+
+```python
+import hash_sequence
+
+seq  = "ACTG"
+hash = hash_sequence(seq)
+```
+
+Perl
+
+```perl
+use hash_sequence qw/hash_sequence/;
+
+$seq  = "ACTG";
+$hash = hash_sequence($seq);
+```
+
+
 ## FAQ
 
 ### Can I transform a hash back to the string?
