@@ -1,0 +1,23 @@
+name: python
+on:
+  push:
+    paths:
+      - .github/workflows/perl.yml
+      - lib/*.pl
+      - lib/*.pm
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Perl 5.32
+      uses: shogo82148/actions-setup-perl@v1
+      with:
+        perl-version: 5.32
+    - name: Install dependencies
+      run: |
+        cpanm --notest Test::More
+    - name: Test with prove
+      run: |
+        prove -l
