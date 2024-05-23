@@ -38,3 +38,8 @@ def reduceMd5(md5: str, max_bits_in_result: int) -> int:
         result = result ^ (rest & p)
         rest = rest >> max_bits_in_result
     return result
+
+# Add in some basic test here for main() but it can be elsewhere long term
+if __name__ == "__main__":
+    print(hash_sequence("ACGT"))
+    print(reduceMd5("098f6bcd4621d373cade4e832627b4f6", 56))

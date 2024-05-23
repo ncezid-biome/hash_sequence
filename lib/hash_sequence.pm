@@ -3,7 +3,8 @@ package hash_sequence;
 
 use strict;
 use warnings;
-use Digest::MD5 qw(md5_hex);
+use Math::BigInt;
+use Digest::MD5 qw(md5_hex md5);
 use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(hash_sequence reduceMd5);
@@ -41,15 +42,19 @@ Reduces the given md5 hash to a 56 bit hash.
 sub hash_sequence {
     my ($sequence) = @_;
 
-    my $md5 = md5_hex($sequence);
+    # Hash the sequence using MD5
+    my $md5_hex = md5_hex($sequence);
     my $max_bits_in_result = 56;
-    my $p = (1 << $max_bits_in_result) - 1;
-    my $rest = hex($md5);
-    my $result = 0;
+    my $p = Math::BigInt->new(1) << $max_bits_in_result;
+    $p -= 1;
+    my $rest = Math::BigInt->new("0x$md5_hex");
+    my $result = Math::BigInt->new(0);
+
     while ($rest != 0) {
         $result = $result ^ ($rest & $p);
         $rest = $rest >> $max_bits_in_result;
     }
+
     return "$result";
 }
 
