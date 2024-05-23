@@ -60,12 +60,16 @@ sub hash_sequence {
 
 sub reduceMd5 {
     my ($md5, $max_bits_in_result) = @_;
-    my $p = (1 << $max_bits_in_result) - 1;
-    my $rest = hex($md5);
-    my $result = 0;
+
+    my $p = Math::BigInt->new(1) << $max_bits_in_result;
+    $p -= 1;
+    my $rest = Math::BigInt->new("0x$md5");
+    my $result = Math::BigInt->new(0);
+
     while ($rest != 0) {
         $result = $result ^ ($rest & $p);
         $rest = $rest >> $max_bits_in_result;
     }
-    return $result;
+
+    return "$result";
 }
