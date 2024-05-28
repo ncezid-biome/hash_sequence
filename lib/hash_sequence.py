@@ -1,4 +1,5 @@
 import hashlib
+import argparse
 
 def hash_sequence(sequence: str) -> str:
     """
@@ -41,5 +42,16 @@ def reduceMd5(md5: str, max_bits_in_result: int) -> int:
 
 # Add in some basic test here for main() but it can be elsewhere long term
 if __name__ == "__main__":
-    print(hash_sequence("ACGT"))
-    print(reduceMd5("098f6bcd4621d373cade4e832627b4f6", 56))
+    
+    parser = argparse.ArgumentParser(prog='hash_sequence',description='hashes a DNA sequence based on the 56-bit hash used in PN2.0 or formats an md5 hash as an n-bit hash in PN2.0 format')
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('-i', '--input', help='input DNA sequence with no extra chars before or after sequence, ex: ATGCATTG')
+    group.add_argument('-m', '--md5', help='an md5 hash, ex: 098f6bcd4621d373cade4e832627b4f6')
+    parser.add_argument('-b', '--bits', default=56, help='number of bits for final hash sequence, can only be used with -m, default: 56')
+
+    args = parser.parse_args()
+
+    if args.input:
+    	print(hash_sequence(args.input))
+    if args.md5 and args.bits:
+        print(reduceMd5(args.md5, args.bits))
