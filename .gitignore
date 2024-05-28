@@ -1,2 +1,3 @@
 lib/__pycache__/
+t/__pycache__/
 lib/test.py
