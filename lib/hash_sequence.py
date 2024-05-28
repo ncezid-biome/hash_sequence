@@ -47,7 +47,7 @@ if __name__ == "__main__":
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('-i', '--input', help='input DNA sequence with no extra chars before or after sequence, ex: ATGCATTG')
     group.add_argument('-m', '--md5', help='an md5 hash, ex: 098f6bcd4621d373cade4e832627b4f6')
-    parser.add_argument('-b', '--bits', default=56, help='number of bits for final hash sequence, can only be used with -m, default: 56')
+    parser.add_argument('-b', '--bits', default=56, type=int, help='number of bits for final hash sequence, can only be used with -m, default: 56')
 
     args = parser.parse_args()
 
