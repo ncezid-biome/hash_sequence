@@ -1,6 +1,6 @@
 import importlib.util
 import sys
-spec = importlib.util.spec_from_file_location("hash_sequence", "../../lib/hash_sequence.py")
+spec = importlib.util.spec_from_file_location("hash_sequence", "/home/runner/work/hash_sequence/hash_sequence/lib/hash_sequence.py")
 hash_sequence = importlib.util.module_from_spec(spec)
 sys.modules["hash_sequence"] = hash_sequence
 spec.loader.exec_module(hash_sequence)
