@@ -1,8 +1,8 @@
 import sys
-sys.path.insert(0, '..')
+sys.path.append('/home/runner/work/hash_sequence/hash_sequence/lib/')
 
 import hashlib
-from lib import hash_seqeunce
+import hash_seqeunce
 
 seq = 'ACGT'
 
