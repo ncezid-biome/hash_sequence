@@ -4,6 +4,7 @@ on:
     paths:
       - .github/workflows/python.yml
       - lib/*.py
+      - t/*.py
 
 jobs:
   test:
@@ -26,4 +27,4 @@ jobs:
     - name: Test with pytest
       run: |
         ls
-        #pytest
+        pytest t/tests.py
