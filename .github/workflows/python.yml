@@ -24,3 +24,20 @@ jobs:
       run: |
         ls
         pytest t/tests.py
+    - name: Test command line help
+      run: |
+        python lib/hash_sequence.py --help
+    - name: Test command line sequence
+      run: |
+        if [ $(python lib/hash_sequence.py -i ACGT) = '46054055969511637' ]; then
+          echo 'correct'
+        else
+          exit 1 
+        fi
+    - name: Test command line md5
+      run: |
+        if [ $(python lib/hash_sequence.py -m f1f8f4bf413b16ad135722aa4591043e) = '46054055969511637' ]; then
+          echo 'correct'
+        else
+          exit 1 
+        fi
