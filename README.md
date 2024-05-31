@@ -15,11 +15,26 @@ Functions:
 
 Python
 
+with hash_sequence.py in your working dir
+
 ```python
 import hash_sequence
 
+# convert seqeunce to PN2.0 hash
 seq  = "ACTG"
-hash = hash_sequence(seq)
+hash = hash_sequence.hash_seqeunce(seq)
+
+# convert md5 hash to PN2.0 hash
+md5 = 'f1f8f4bf413b16ad135722aa4591043e'
+hash = hash_seqeunce.reduceMd5(md5, 56)
+```
+
+```bash
+$ python hash_sequence.py -i ACGT
+46054055969511637
+
+$ python hash_sequence.py -m f1f8f4bf413b16ad135722aa4591043e
+46054055969511637
 ```
 
 Perl
