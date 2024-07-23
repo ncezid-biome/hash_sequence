@@ -62,7 +62,7 @@ if __name__ == "__main__":
     if args.input:
     	out_str = hash_sequence(args.input) + '\n'
     if args.md5 and args.bits:
-        out_str = reduceMd5(args.md5, args.bits) + '\n'
+        out_str = str(reduceMd5(args.md5, args.bits)) + '\n'
 
     if args.output:
         with open(args.output,'w') as out_file:
