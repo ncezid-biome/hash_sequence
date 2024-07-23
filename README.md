@@ -13,21 +13,25 @@ Functions:
 
 ## Usage
 
-Python
+### Python
 
 with hash_sequence.py in your working dir
+
+via import
 
 ```python
 import hash_sequence
 
 # convert seqeunce to PN2.0 hash
 seq  = "ACTG"
-hash = hash_sequence.hash_seqeunce(seq)
+hash = hash_sequence.hash_sequence(seq)
 
 # convert md5 hash to PN2.0 hash
 md5 = 'f1f8f4bf413b16ad135722aa4591043e'
-hash = hash_seqeunce.reduceMd5(md5, 56)
+hash = hash_sequence.reduceMd5(md5, 56)
 ```
+
+via command line
 
 ```bash
 $ python hash_sequence.py -i ACGT
@@ -35,9 +39,15 @@ $ python hash_sequence.py -i ACGT
 
 $ python hash_sequence.py -m f1f8f4bf413b16ad135722aa4591043e
 46054055969511637
+
+$ python hash_sequence.py -l /path/to/inputs.txt
+46054055969511637
+85152937750931901
+23743195715719382
+
 ```
 
-Perl
+### Perl
 
 ```perl
 use hash_sequence qw/hash_sequence/;
@@ -46,6 +56,9 @@ $seq  = "ACTG";
 $hash = hash_sequence($seq);
 ```
 
+### Rust
+
+see [here](https://github.com/ncezid-biome/md5_reducer) for a Rust implementation with instructions.
 
 ## FAQ
 

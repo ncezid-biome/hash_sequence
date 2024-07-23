@@ -41,3 +41,17 @@ jobs:
         else
           exit 1 
         fi
+    - name: Test command line list
+      run: |
+        if [ $(python lib/hash_sequence.py -l t/seqs.txt) = '46054055969511637\n68447323523890455\n' ]; then
+          echo 'correct'
+        else
+          exit 1 
+        fi
+    - name: Test command line output file
+      run: |
+        if [ $(python lib/hash_sequence.py -l t/seqs.txt -o tmp.txt) = '' ] && [ -f tmp.txt ]; then
+          echo 'correct'
+        else
+          exit 1
+        fi
