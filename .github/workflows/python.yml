@@ -43,7 +43,7 @@ jobs:
         fi
     - name: Test command line list
       run: |
-        if [ $(python lib/hash_sequence.py -l t/seqs.txt) = '46054055969511637\n68447323523890455\n' ]; then
+        if [ $(python lib/hash_sequence.py -l t/seqs.txt | tr '\n' ',') = '46054055969511637,68447323523890455,' ]; then
           echo 'correct'
         else
           exit 1 
