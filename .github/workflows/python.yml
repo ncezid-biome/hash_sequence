@@ -50,7 +50,7 @@ jobs:
         fi
     - name: Test command line output file
       run: |
-        if [ $(python lib/hash_sequence.py -l t/seqs.txt -o tmp.txt) = '' ] && [ -f tmp.txt ]; then
+        if [[ $(python lib/hash_sequence.py -l t/seqs.txt -o tmp.txt) = '' ]] && [ -f tmp.txt ]; then
           echo 'correct'
         else
           exit 1
